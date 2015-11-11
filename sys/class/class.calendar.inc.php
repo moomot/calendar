@@ -1,6 +1,6 @@
 <?php
-include_once '../sys/class/class.db_connect.inc.php';
-include_once '../sys/class/class.event.inc.php';
+//include_once 'class.db_connect.inc.php';
+//include_once 'class.event.inc.php';
 class Calendar extends DB_Connect
 {
 	private $_useDate;
@@ -35,7 +35,7 @@ class Calendar extends DB_Connect
 	public function buildCalendar()
 	{
 		$cal_month = date('F Y', strtotime($this->_useDate));
-		$weekdays = ['Sun', 'Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat'];
+		$weekdays = array("Sun", "Mon", "Tue", "Wen", "Thu", "Fri", "Sat");
 
 		$html = "\n\t<h2>$cal_month</h2>";
 
@@ -222,9 +222,8 @@ FORM_MARKUP;
 
 	if ( empty($_POST['event_id']) )
 	{
-		$sql = "INSERT INTO `events`
-                        (`event_title`, `event_desc`, `event_start`,
-                            `event_end`)
+		$sql = "INSERT INTO `events`(`event_title`, `event_desc`, `event_start`,
+`event_end`)
                     VALUES
                         (:title, :description, :start, :end)";
 	}

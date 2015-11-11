@@ -3,12 +3,18 @@
 /*
  * Include necessary files
  */
-include_once '../sys/core/init.inc.php';
-include_once "../sys/class/class.calendar.inc.php";
-include_once "../sys/class/class.db_connect.inc.php";
+function __autoload($class_name)
+{
+    $filename = '../sys/class/class.' . strtolower($class_name) . '.inc.php';
+    if ( file_exists($filename) )
+    {
+        include $filename;
+    }
+}
 /*
  * Load the calendar for January
  */
+include_once '../sys/core/init.inc.php';
 $cal = new Calendar($dbo, "2010-01-01 12:00:00");
 
 /*
@@ -26,7 +32,6 @@ include_once 'assets/common/header.inc.php';
 
 	<div id="content">
 		<?php
-
 
 		echo $cal->buildCalendar();
 

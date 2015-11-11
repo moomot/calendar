@@ -9,6 +9,14 @@ session_start();
  */
 include_once '../../../sys/config/db_cred.inc.php';
 include_once '../../../sys/core/init.inc.php';
+function __autoload($class_name)
+{
+    $filename = '../../../sys/class/class.' . strtolower($class_name) . '.inc.php';
+    if ( file_exists($filename) )
+    {
+        include $filename;
+    }
+}
 
 /*
  * Define constants for config info
@@ -28,7 +36,7 @@ $actions = array(
                 'header' => 'Location: ../../'
             ),
 			'user_login' => array(
-				'object' => 'Admin',
+				'object' => 'admin',
 				'method' => 'processLoginForm',
 				'header' => 'Location: ../../'
 			)

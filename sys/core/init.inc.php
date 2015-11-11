@@ -1,6 +1,6 @@
 <?php
 
-include_once '../config/db_cred.inc.php';
+include_once '/../config/db_cred.inc.php';
 
 session_start();
 if (!isset($_SESSION['token'])) {
@@ -12,4 +12,3 @@ foreach ($C as $name => $val){
 }
 $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME;
 $dbo = new PDO($dsn, DB_USER, DB_PASS);
-

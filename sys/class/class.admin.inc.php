@@ -1,5 +1,5 @@
 <?php
-include_once '../sys/class/class.db_connect.inc.php';
+
 
 class Admin extends DB_Connect
 {
